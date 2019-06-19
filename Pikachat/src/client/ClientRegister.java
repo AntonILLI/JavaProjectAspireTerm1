@@ -91,26 +91,37 @@ public class ClientRegister {
 		btnNewButton = new JButton("Register");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				ClientInfo.getConnection(cName.getText(), cNickname.getText(), String.valueOf(cPassword.getPassword()));
-				frame.dispose();
+				
+				String hash = "";
+				String code = String.copyValueOf(cPassword.getPassword());
+				try {
+					hash = hashPassword(code);
+				} catch (NoSuchAlgorithmException e1) {
+					e1.printStackTrace();
+				} finally {
+					ClientInfo.getConnection(cName.getText(), cNickname.getText(), hash);
+					frame.dispose();
+				}
+				
 
 			}
 		});
 		panel.add(btnNewButton);
 
 	}
+
 	public static String hashPassword(String password) throws NoSuchAlgorithmException {
 
 		MessageDigest md = MessageDigest.getInstance("MD5");
 		md.update(password.getBytes());
 		byte[] b = md.digest();
 		StringBuffer sb = new StringBuffer();
-		for (byte b1 :b) {
+		for (byte b1 : b) {
 			sb.append(Integer.toHexString(b1 & 0xff).toString());
 		}
-		System.out.println(sb.toString());
-		return sb.toString();
+		//System.out.println(sb.toString());
+	
+	return sb.toString();
 	}
 
 }

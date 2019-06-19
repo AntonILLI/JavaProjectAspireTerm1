@@ -70,7 +70,7 @@ public class ClientInfo {
 	 * Allow access to chat application reading nickname and password from the MySQL
 	 * Database
 	 */
-	public static boolean getConnection(String loginName, char[] loginPassword) {
+	public static boolean getConnection(String loginName, String loginPassword) {
 
 		Connection cnx = null;
 		boolean userConfirmed = false;
@@ -83,13 +83,13 @@ public class ClientInfo {
 			cnx = DriverManager.getConnection(url, user, password);
 
 			PreparedStatement stmnt = cnx.prepareStatement("SELECT * FROM `users_registered` WHERE `nickname` = '"
-					+ loginName + "' AND `password` = '" + String.valueOf(loginPassword) + "'");
+					+ loginName + "' AND `password` = '" + loginPassword + "'");
 
 			ResultSet rs = stmnt.executeQuery();
 
 
 			if (rs.next()) {
-				System.out.println("Access granted to: " + loginName + " " + String.copyValueOf(loginPassword));
+				System.out.println("Access granted to: " + loginName + " " + loginPassword);
 				userConfirmed = true;
 			} else {
 				JOptionPane.showMessageDialog(null, "Invalid nickname and/or password");

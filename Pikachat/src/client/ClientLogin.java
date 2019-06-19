@@ -20,6 +20,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JPasswordField;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import java.security.NoSuchAlgorithmException;
 
 public class ClientLogin {
 
@@ -87,31 +88,35 @@ public class ClientLogin {
 		gbc_lblEnterYouPassword.gridy = 3;
 		frame.getContentPane().add(lblEnterYouPassword, gbc_lblEnterYouPassword);
 
-
 		JButton btnLogOn = new JButton("Log On");
 		btnLogOn.setBackground(new Color(106, 90, 255));
 		btnLogOn.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnLogOn.setForeground(new Color(106, 90, 255));
+		btnLogOn.setForeground(Color.WHITE);
 
 		btnLogOn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
+				String hash = "";
+				String code = String.copyValueOf(loginPassword.getPassword());
+				
 				try {
 
+					hash = ClientRegister.hashPassword(code);
+					
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					
+					ClientInfo.getConnection(loginNickname.getText(), hash);
 					frame.dispose();
-
-					ClientInfo.getConnection(loginNickname.getText(), loginPassword.getPassword());
-					// boolean check = ClientInfo.getConnection(loginNickname.getText(),
-					// loginPassword.getPassword());
-					// if(check == true) {
+					
 					String name = loginNickname.getText();
 					ClientWindow chatWindow = new ClientWindow(name);
 					chatWindow.frmPikachat.setVisible(true);
-					// }
-
-				} catch (Exception e) {
-					e.printStackTrace();
+					
 				}
+
+				
 			}
 		});
 

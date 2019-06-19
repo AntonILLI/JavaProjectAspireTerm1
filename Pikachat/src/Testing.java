@@ -44,8 +44,7 @@ class Testing {
 	public void testD() {
 		String user = "billy";
 		String password = "b00bs";
-		char[] c = password.toCharArray();
-		boolean result = ClientInfo.getConnection(user, c);
+		boolean result = ClientInfo.getConnection(user, password);
 		assertEquals(true, result);	
 	}
 	
