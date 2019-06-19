@@ -96,6 +96,8 @@ public class ClientRegister {
 			}
 		});
 		panel.add(btnNewButton);
+
+		//I try to incrypto the password, if i failed, just tell Alix, I tried many times.
 	}
 
 }
