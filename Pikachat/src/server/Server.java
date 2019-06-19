@@ -8,7 +8,7 @@ import java.util.HashSet;
 public class Server {
 	
 	private static DatagramSocket socket;
-	//private static int port;
+	private static int port;
 	private static HashSet<ClientInfo> clients = new HashSet<ClientInfo>();
 	public static int ClientID;
 	public static boolean running;
