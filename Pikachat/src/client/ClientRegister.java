@@ -16,6 +16,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class ClientRegister {
 
@@ -102,6 +104,18 @@ public class ClientRegister {
 		// I have successfully pushed this shit
 		// Adding another comment
 		// One more comment
+	}
+	public static String hashPassword(String password) throws NoSuchAlgorithmException {
+
+		MessageDigest md = MessageDigest.getInstance("MD5");
+		md.update(password.getBytes());
+		byte[] b = md.digest();
+		StringBuffer sb = new StringBuffer();
+		for (byte b1 :b) {
+			sb.append(Integer.toHexString(b1 & 0xff).toString());
+		}
+		System.out.println(sb.toString());
+		return sb.toString();
 	}
 
 }

@@ -84,8 +84,17 @@ public class ClientLogin {
 		gbc_lblEnterYouPassword.gridx = 1;
 		gbc_lblEnterYouPassword.gridy = 3;
 		frame.getContentPane().add(lblEnterYouPassword, gbc_lblEnterYouPassword);
+<<<<<<< HEAD
 
 		JButton btnLogOn = new JButton("Log On");
+=======
+		
+		//JButton btnLogOn = new JButton("Log On");
+		JButton btnLogOn = new JButton(" Log On  ");
+		btnLogOn.setBackground(new Color(106, 90, 255));
+		btnLogOn.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnLogOn.setForeground(new Color(106, 90, 255));
+>>>>>>> branch 'master' of https://github.com/AntonILLI/JavaProjectAspireTerm1.git
 		btnLogOn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 

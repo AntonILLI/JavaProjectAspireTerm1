@@ -11,5 +11,11 @@ public class ServerStart {
 		Server.start(3306);
 
 	}
+<<<<<<< HEAD
 
 }
+=======
+//This is from Masa
+//Masa couldn't
+}
+>>>>>>> branch 'master' of https://github.com/AntonILLI/JavaProjectAspireTerm1.git
