@@ -85,7 +85,11 @@ public class ClientLogin {
 		gbc_lblEnterYouPassword.gridy = 3;
 		frame.getContentPane().add(lblEnterYouPassword, gbc_lblEnterYouPassword);
 		
-		JButton btnLogOn = new JButton("Log On");
+		//JButton btnLogOn = new JButton("Log On");
+		JButton btnLogOn = new JButton(" Log On  ");
+		btnLogOn.setBackground(new Color(106, 90, 255));
+		btnLogOn.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		btnLogOn.setForeground(new Color(106, 90, 255));
 		btnLogOn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			
