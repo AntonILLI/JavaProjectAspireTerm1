@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 
 public class ClientInfo {
 
+	public static boolean userConfirmed;
 	private InetAddress address;
 	private int port;
 	private int id;
@@ -63,7 +64,7 @@ public class ClientInfo {
 	/*
 	 * Allow access to chat application reading nickname and password from the MySQL Database
 	 */
-	public static void getConnection(String loginName, char[] loginPassword) {
+	public static boolean getConnection(String loginName, char[] loginPassword) {
 		
 		Connection cnx = null;
 		
@@ -92,7 +93,7 @@ public class ClientInfo {
 			System.out.println("Access denied");
 			e.printStackTrace();
 		}
-		
+	return userConfirmed;	
 	}
 		
 }

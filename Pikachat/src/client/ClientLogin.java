@@ -98,11 +98,13 @@ public class ClientLogin {
 					frame.dispose();
 					
 					ClientInfo.getConnection(loginNickname.getText(), loginPassword.getPassword());
+					//boolean check = ClientInfo.getConnection(loginNickname.getText(), loginPassword.getPassword());
+					//if(check == true) {
 					String name = loginNickname.getText();	
-					
 					ClientWindow chatWindow = new ClientWindow(name);
 					chatWindow.frmPikachat.setVisible(true);
-									
+					//}
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
