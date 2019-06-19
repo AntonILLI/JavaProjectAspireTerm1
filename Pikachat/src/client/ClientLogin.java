@@ -21,6 +21,7 @@ import javax.swing.JPasswordField;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.security.NoSuchAlgorithmException;
+import java.awt.Toolkit;
 
 public class ClientLogin {
 
@@ -56,15 +57,20 @@ public class ClientLogin {
 	 */
 	public void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 330, 300);
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Aspire2 Student\\eclipse-workspace\\JavaProjectAspireTerm1\\Pikachat\\images\\pikachu.png"));
+		frame.setAlwaysOnTop(true);
+		frame.setBounds(100, 100, 300, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 0, 0, 0, 0 };
 		gridBagLayout.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
 		gridBagLayout.columnWeights = new double[] { 1.0, 0.0, 1.0, Double.MIN_VALUE };
 		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		
 		frame.getContentPane().setLayout(gridBagLayout);
-
+		frame.getContentPane().setBackground(new java.awt.Color(255, 255, 204));
+		
 		JLabel lblEnterYourNickname = new JLabel("Enter your nickname:");
 		GridBagConstraints gbc_lblEnterYourNickname = new GridBagConstraints();
 		gbc_lblEnterYourNickname.insets = new Insets(0, 0, 5, 5);
@@ -89,9 +95,9 @@ public class ClientLogin {
 		frame.getContentPane().add(lblEnterYouPassword, gbc_lblEnterYouPassword);
 
 		JButton btnLogOn = new JButton("Log On");
-		btnLogOn.setBackground(new Color(106, 90, 255));
-		btnLogOn.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		btnLogOn.setForeground(Color.WHITE);
+		btnLogOn.setBackground(Color.WHITE);
+		btnLogOn.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		btnLogOn.setForeground(Color.BLACK);
 
 		btnLogOn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

@@ -26,6 +26,7 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.BoxLayout;
 
 public class ClientWindow {
 
@@ -53,13 +54,7 @@ public class ClientWindow {
 
 	public ClientWindow(String nickname) {
 
-		// ClientLogin window = new ClientLogin();
-		// window.frame.setVisible(true);
-		// window.initialize();
-
 		client = new Client(nickname, "localhost", 3306);
-
-		// client = new Client("Users", "localhost", 3306);
 
 		initialize();
 	}
@@ -69,8 +64,8 @@ public class ClientWindow {
 		frmPikachat.setAlwaysOnTop(true);
 		frmPikachat.setResizable(false);
 		frmPikachat.setTitle("Pikachat");
-		frmPikachat.setIconImage(Toolkit.getDefaultToolkit().getImage("images\\pikachu.png"));
-		frmPikachat.setBounds(100, 100, 450, 600);
+		frmPikachat.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Aspire2 Student\\eclipse-workspace\\JavaProjectAspireTerm1\\Pikachat\\images\\pikachu.png"));
+		frmPikachat.setBounds(100, 100, 450, 300);
 		frmPikachat.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -84,7 +79,6 @@ public class ClientWindow {
 		JPanel panel = new JPanel();
 		panel.setBackground(new java.awt.Color(255, 102, 102));
 		frmPikachat.getContentPane().add(panel, BorderLayout.SOUTH);
-		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
 		messageField = new JTextField();
 		messageField.addKeyListener(new KeyAdapter() {
@@ -96,13 +90,14 @@ public class ClientWindow {
 				}
 			}
 		});
+		panel.setLayout(new BoxLayout(panel, BoxLayout.X_AXIS));
 		panel.add(messageField);
 		messageField.setColumns(40);
 
 		JButton btnSendMessage = new JButton("");
 		btnSendMessage.setForeground(Color.WHITE);
 		btnSendMessage.setBackground(new java.awt.Color(255, 255, 204));
-		btnSendMessage.setIcon(new ImageIcon("images\\pokeball.png"));
+		btnSendMessage.setIcon(new ImageIcon("C:\\Users\\Aspire2 Student\\eclipse-workspace\\JavaProjectAspireTerm1\\Pikachat\\images\\pokeball.png"));
 		btnSendMessage.addActionListener(e -> {//try out lambda expression
 			if (!messageField.getText().equals("")) {
 				client.send(messageField.getText());

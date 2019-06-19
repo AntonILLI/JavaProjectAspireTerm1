@@ -3,6 +3,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -15,6 +16,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.runners.JUnit4;
 
 import client.Client;
+import client.ClientRegister;
 import server.ClientInfo;
 
 class Testing {
@@ -41,18 +43,18 @@ class Testing {
 	}
 
 	@Test
-	public void testD() {
-		String user = "billy";
-		String password = "b00bs";
+	public void testD() throws Throwable {
+		String user = "jackie";
+		String password = ClientRegister.hashPassword("jackie");
 		boolean result = ClientInfo.getConnection(user, password);
 		assertEquals(true, result);	
 	}
 	
 	@Test
-	public void testF() throws SQLException {
+	public void testF() throws Throwable {
 		String user = "admin";
 		String nickname = "admin";
-		String password = "admin";
+		String password = ClientRegister.hashPassword("admin");
 		
 		boolean result = ClientInfo.getConnection(user, nickname, password);
 		assertEquals(false, result);
@@ -60,7 +62,7 @@ class Testing {
 		 * Delete record from the database
 		 */
 		Connection cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", null);
-		PreparedStatement stmnt = cnx.prepareStatement("DELETE FROM `users_registered` WHERE `password` = 'admin'");
+		PreparedStatement stmnt = cnx.prepareStatement("DELETE FROM `users_registered` WHERE `password` = '"+password+"'");
 		stmnt.execute();
 		}
 }

@@ -81,8 +81,8 @@ public class Server {
 	}
 	/*Server command list
 	 * 
-	 * \con - connect client to the server
-	 * \dis - disconnect a client from the server
+	 * Not yet implemented
+	 * 
 	 */
 	public static boolean isCommand(String message, DatagramPacket packet) {
 		

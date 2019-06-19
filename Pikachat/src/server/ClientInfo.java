@@ -53,7 +53,7 @@ public class ClientInfo {
 			String password = null;
 
 			cnx = DriverManager.getConnection(url, user, password);
-
+			
 			PreparedStatement stmnt = cnx
 					.prepareStatement("INSERT INTO `users_registered`(`name`, `nickname`, `password`) VALUES ('" + cName
 							+ "','" + cNickname + "','" + cPassword + "')");
@@ -87,7 +87,6 @@ public class ClientInfo {
 
 			ResultSet rs = stmnt.executeQuery();
 
-
 			if (rs.next()) {
 				System.out.println("Access granted to: " + loginName + " " + loginPassword);
 				userConfirmed = true;
@@ -96,7 +95,6 @@ public class ClientInfo {
 			}
 
 		} catch (Exception e) {
-			System.out.println("Access denied");
 			e.printStackTrace();
 		}
 	return userConfirmed;
