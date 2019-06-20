@@ -13,19 +13,19 @@ public class Client {
 	public static int port;
 	public static String name;
 	private boolean running;
-	
+
 	public static String getName() {
 		return name;
 	}
-	
+
 	public static InetAddress getAddress() {
 		return address;
 	}
-	
+
 	public static int getPort() {
 		return port;
 	}
-	
+
 	public Client(String name, String address, int port) {
 
 		try {

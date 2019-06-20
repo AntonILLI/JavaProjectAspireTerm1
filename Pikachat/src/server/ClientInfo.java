@@ -46,24 +46,24 @@ public class ClientInfo {
 	public static boolean getConnection(String cName, String cNickname, String cPassword) {
 
 		Connection cnx = null;
-		boolean executed = false;	
+		boolean executed = false;
 		try {
 			String url = "jdbc:mysql://localhost:3306/test";
 			String user = "root";
 			String password = null;
 
 			cnx = DriverManager.getConnection(url, user, password);
-			
+
 			PreparedStatement stmnt = cnx
 					.prepareStatement("INSERT INTO `users_registered`(`name`, `nickname`, `password`) VALUES ('" + cName
 							+ "','" + cNickname + "','" + cPassword + "')");
-			
+
 			executed = stmnt.execute();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	return executed;	
+		return executed;
 	}
 
 	/*
@@ -73,8 +73,9 @@ public class ClientInfo {
 	public static boolean getConnection(String loginName, String loginPassword) {
 
 		Connection cnx = null;
+
 		boolean userConfirmed = false;
-		
+
 		try {
 			String url = "jdbc:mysql://localhost:3306/test";
 			String user = "root";
@@ -97,7 +98,6 @@ public class ClientInfo {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	return userConfirmed;
+		return userConfirmed;
 	}
-
 }

@@ -23,23 +23,23 @@ class Testing {
 
 	@Test
 	public void testA() {
-		Client user = new Client("John", "localhost", 3306);
-		String name = "John";
-		assertEquals(name, Client.getName());
+		Client user = new Client("John", "localhost", 3306); // create an object
+		String name = "John"; // create a excepted result
+		assertEquals(name, user.getName()); // compare expected result to an actual result
 	}
-	
+
 	@Test
 	public void testB() throws Throwable {
 		Client user = new Client("John", "localhost", 3306);
 		InetAddress address = InetAddress.getByName("localhost");
-		assertEquals(address, Client.getAddress());
+		assertEquals(address, user.getAddress());
 	}
-	
+
 	@Test
 	public void testC() {
 		Client user = new Client("John", "localhost", 3306);
 		int port = 3306;
-		assertEquals(port, Client.getPort());	
+		assertEquals(port, user.getPort());
 	}
 
 	@Test
@@ -47,22 +47,23 @@ class Testing {
 		String user = "jackie";
 		String password = ClientRegister.hashPassword("jackie");
 		boolean result = ClientInfo.getConnection(user, password);
-		assertEquals(true, result);	
+		assertEquals(true, result);
 	}
-	
+
 	@Test
 	public void testF() throws Throwable {
 		String user = "admin";
 		String nickname = "admin";
 		String password = ClientRegister.hashPassword("admin");
-		
+
 		boolean result = ClientInfo.getConnection(user, nickname, password);
 		assertEquals(false, result);
 		/*
 		 * Delete record from the database
 		 */
 		Connection cnx = DriverManager.getConnection("jdbc:mysql://localhost:3306/test", "root", null);
-		PreparedStatement stmnt = cnx.prepareStatement("DELETE FROM `users_registered` WHERE `password` = '"+password+"'");
+		PreparedStatement stmnt = cnx
+				.prepareStatement("DELETE FROM `users_registered` WHERE `password` = '" + password + "'");
 		stmnt.execute();
-		}
+	}
 }

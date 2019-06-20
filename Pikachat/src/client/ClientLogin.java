@@ -58,20 +58,21 @@ public class ClientLogin {
 	public void initialize() {
 		frmLogin = new JFrame();
 		frmLogin.setTitle("Login");
-		frmLogin.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Aspire2 Student\\eclipse-workspace\\JavaProjectAspireTerm1\\Pikachat\\images\\pikachu.png"));
+		frmLogin.setIconImage(
+				Toolkit.getDefaultToolkit().getImage(ClientWindow.class.getResource("/images/pikachu.png")));
 		frmLogin.setAlwaysOnTop(true);
 		frmLogin.setBounds(100, 100, 300, 300);
 		frmLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 0, 0, 0, 0 };
 		gridBagLayout.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
 		gridBagLayout.columnWeights = new double[] { 1.0, 0.0, 1.0, Double.MIN_VALUE };
 		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
-		
+
 		frmLogin.getContentPane().setLayout(gridBagLayout);
 		frmLogin.getContentPane().setBackground(new java.awt.Color(255, 255, 204));
-		
+
 		JLabel lblEnterYourNickname = new JLabel("Enter your nickname:");
 		GridBagConstraints gbc_lblEnterYourNickname = new GridBagConstraints();
 		gbc_lblEnterYourNickname.insets = new Insets(0, 0, 5, 5);
@@ -96,34 +97,33 @@ public class ClientLogin {
 		frmLogin.getContentPane().add(lblEnterYouPassword, gbc_lblEnterYouPassword);
 
 		JButton btnLogOn = new JButton("Log On");
-		btnLogOn.setBackground(Color.WHITE);
-		btnLogOn.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		btnLogOn.setForeground(Color.BLACK);
+		btnLogOn.setBackground(new java.awt.Color(255, 102, 102));
+		btnLogOn.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnLogOn.setForeground(Color.WHITE);
 
 		btnLogOn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
 				String hash = "";
 				String code = String.copyValueOf(loginPassword.getPassword());
-				
+
 				try {
 
 					hash = ClientRegister.hashPassword(code);
-					
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				} finally {
-					
+
 					ClientInfo.getConnection(loginNickname.getText(), hash);
 					frmLogin.dispose();
-					
+
 					String name = loginNickname.getText();
 					ClientWindow chatWindow = new ClientWindow(name);
 					chatWindow.frmPikachat.setVisible(true);
-					
+
 				}
 
-				
 			}
 		});
 
@@ -141,6 +141,9 @@ public class ClientLogin {
 		frmLogin.getContentPane().add(btnLogOn, gbc_btnLogOn);
 
 		JButton btnRegister = new JButton("Register ");
+		btnRegister.setFont(new Font("Tahoma", Font.BOLD, 11));
+		btnRegister.setForeground(Color.WHITE);
+		btnRegister.setBackground(new java.awt.Color(255, 102, 102));
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 

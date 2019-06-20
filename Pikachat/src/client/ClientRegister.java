@@ -74,7 +74,7 @@ public class ClientRegister {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new BorderLayout(0, 0));
 		frame.setTitle("Register");
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("images\\pikachu.png"));
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(ClientWindow.class.getResource("/images/pikachu.png")));
 
 		panel = new JPanel();
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
