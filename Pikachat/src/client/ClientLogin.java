@@ -25,7 +25,7 @@ import java.awt.Toolkit;
 
 public class ClientLogin {
 
-	public JFrame frame;
+	public JFrame frmLogin;
 	public JTextField loginNickname;
 	public JPasswordField loginPassword;
 
@@ -37,7 +37,7 @@ public class ClientLogin {
 			public void run() {
 				try {
 					ClientLogin window = new ClientLogin();
-					window.frame.setVisible(true);
+					window.frmLogin.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -56,11 +56,12 @@ public class ClientLogin {
 	 * Initialize the contents of the frame.
 	 */
 	public void initialize() {
-		frame = new JFrame();
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Aspire2 Student\\eclipse-workspace\\JavaProjectAspireTerm1\\Pikachat\\images\\pikachu.png"));
-		frame.setAlwaysOnTop(true);
-		frame.setBounds(100, 100, 300, 300);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmLogin = new JFrame();
+		frmLogin.setTitle("Login");
+		frmLogin.setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\Aspire2 Student\\eclipse-workspace\\JavaProjectAspireTerm1\\Pikachat\\images\\pikachu.png"));
+		frmLogin.setAlwaysOnTop(true);
+		frmLogin.setBounds(100, 100, 300, 300);
+		frmLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 0, 0, 0, 0 };
@@ -68,15 +69,15 @@ public class ClientLogin {
 		gridBagLayout.columnWeights = new double[] { 1.0, 0.0, 1.0, Double.MIN_VALUE };
 		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		
-		frame.getContentPane().setLayout(gridBagLayout);
-		frame.getContentPane().setBackground(new java.awt.Color(255, 255, 204));
+		frmLogin.getContentPane().setLayout(gridBagLayout);
+		frmLogin.getContentPane().setBackground(new java.awt.Color(255, 255, 204));
 		
 		JLabel lblEnterYourNickname = new JLabel("Enter your nickname:");
 		GridBagConstraints gbc_lblEnterYourNickname = new GridBagConstraints();
 		gbc_lblEnterYourNickname.insets = new Insets(0, 0, 5, 5);
 		gbc_lblEnterYourNickname.gridx = 1;
 		gbc_lblEnterYourNickname.gridy = 1;
-		frame.getContentPane().add(lblEnterYourNickname, gbc_lblEnterYourNickname);
+		frmLogin.getContentPane().add(lblEnterYourNickname, gbc_lblEnterYourNickname);
 
 		loginNickname = new JTextField();
 		GridBagConstraints gbc_loginNickname = new GridBagConstraints();
@@ -84,7 +85,7 @@ public class ClientLogin {
 		gbc_loginNickname.insets = new Insets(0, 0, 5, 5);
 		gbc_loginNickname.gridx = 1;
 		gbc_loginNickname.gridy = 2;
-		frame.getContentPane().add(loginNickname, gbc_loginNickname);
+		frmLogin.getContentPane().add(loginNickname, gbc_loginNickname);
 		loginNickname.setColumns(30);
 
 		JLabel lblEnterYouPassword = new JLabel("Enter you password:");
@@ -92,7 +93,7 @@ public class ClientLogin {
 		gbc_lblEnterYouPassword.insets = new Insets(0, 0, 5, 5);
 		gbc_lblEnterYouPassword.gridx = 1;
 		gbc_lblEnterYouPassword.gridy = 3;
-		frame.getContentPane().add(lblEnterYouPassword, gbc_lblEnterYouPassword);
+		frmLogin.getContentPane().add(lblEnterYouPassword, gbc_lblEnterYouPassword);
 
 		JButton btnLogOn = new JButton("Log On");
 		btnLogOn.setBackground(Color.WHITE);
@@ -114,7 +115,7 @@ public class ClientLogin {
 				} finally {
 					
 					ClientInfo.getConnection(loginNickname.getText(), hash);
-					frame.dispose();
+					frmLogin.dispose();
 					
 					String name = loginNickname.getText();
 					ClientWindow chatWindow = new ClientWindow(name);
@@ -132,18 +133,18 @@ public class ClientLogin {
 		gbc_loginPassword.fill = GridBagConstraints.HORIZONTAL;
 		gbc_loginPassword.gridx = 1;
 		gbc_loginPassword.gridy = 4;
-		frame.getContentPane().add(loginPassword, gbc_loginPassword);
+		frmLogin.getContentPane().add(loginPassword, gbc_loginPassword);
 		GridBagConstraints gbc_btnLogOn = new GridBagConstraints();
 		gbc_btnLogOn.insets = new Insets(0, 0, 5, 5);
 		gbc_btnLogOn.gridx = 1;
 		gbc_btnLogOn.gridy = 5;
-		frame.getContentPane().add(btnLogOn, gbc_btnLogOn);
+		frmLogin.getContentPane().add(btnLogOn, gbc_btnLogOn);
 
 		JButton btnRegister = new JButton("Register ");
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
-				frame.dispose();
+				frmLogin.dispose();
 				ClientRegister window = new ClientRegister();
 				window.frame.setVisible(true);
 
@@ -153,7 +154,7 @@ public class ClientLogin {
 		gbc_btnRegister.insets = new Insets(0, 0, 0, 5);
 		gbc_btnRegister.gridx = 1;
 		gbc_btnRegister.gridy = 6;
-		frame.getContentPane().add(btnRegister, gbc_btnRegister);
+		frmLogin.getContentPane().add(btnRegister, gbc_btnRegister);
 	}
 
 }

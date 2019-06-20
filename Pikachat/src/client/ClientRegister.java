@@ -47,7 +47,7 @@ public class ClientRegister {
 			public void run() {
 				try {
 					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-					
+
 					ClientRegister window = new ClientRegister();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
@@ -88,54 +88,54 @@ public class ClientRegister {
 		cName = new JTextField();
 		panel.add(cName);
 		cName.setColumns(45);
-		
+
 		label_1 = new JLabel("");
 		panel.add(label_1);
-				
-						lblNickname = new JLabel("Nickname:");
-						lblNickname.setHorizontalAlignment(SwingConstants.RIGHT);
-						panel.add(lblNickname);
-		
-				cNickname = new JTextField();
-				panel.add(cNickname);
-				cNickname.setColumns(45);
-		
+
+		lblNickname = new JLabel("Nickname:");
+		lblNickname.setHorizontalAlignment(SwingConstants.RIGHT);
+		panel.add(lblNickname);
+
+		cNickname = new JTextField();
+		panel.add(cNickname);
+		cNickname.setColumns(45);
+
 		label_4 = new JLabel("");
 		panel.add(label_4);
-				
-						lblPassword = new JLabel("Password:");
-						lblPassword.setHorizontalAlignment(SwingConstants.RIGHT);
-						panel.add(lblPassword);
-		
-				cPassword = new JPasswordField();
-				cPassword.setColumns(45);
-				panel.add(cPassword);
-				
-				panel_1 = new JPanel();
-				panel_1.setBackground(new java.awt.Color(255, 102, 102));
-				frame.getContentPane().add(panel_1, BorderLayout.SOUTH);
-				
-						btnNewButton = new JButton("Register");
-						panel_1.add(btnNewButton);
-						btnNewButton.addActionListener(new ActionListener() {
-							public void actionPerformed(ActionEvent e) {
-								
-								String hash = "";
-								String code = String.copyValueOf(cPassword.getPassword());
-								try {
-									hash = hashPassword(code);
-								} catch (NoSuchAlgorithmException e1) {
-									e1.printStackTrace();
-								} finally {
-									ClientInfo.getConnection(cName.getText(), cNickname.getText(), hash);
-									frame.dispose();
-								}
-							
-							ClientLogin window = new ClientLogin();
-							window.frame.setVisible(true);
 
-							}
-						});
+		lblPassword = new JLabel("Password:");
+		lblPassword.setHorizontalAlignment(SwingConstants.RIGHT);
+		panel.add(lblPassword);
+
+		cPassword = new JPasswordField();
+		cPassword.setColumns(45);
+		panel.add(cPassword);
+
+		panel_1 = new JPanel();
+		panel_1.setBackground(new java.awt.Color(255, 102, 102));
+		frame.getContentPane().add(panel_1, BorderLayout.SOUTH);
+
+		btnNewButton = new JButton("Register");
+		panel_1.add(btnNewButton);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				String hash = "";
+				String code = String.copyValueOf(cPassword.getPassword());
+				try {
+					hash = hashPassword(code);
+				} catch (NoSuchAlgorithmException e1) {
+					e1.printStackTrace();
+				} finally {
+					ClientInfo.getConnection(cName.getText(), cNickname.getText(), hash);
+					frame.dispose();
+				}
+
+				ClientLogin window = new ClientLogin();
+				window.frmLogin.setVisible(true);
+
+			}
+		});
 
 	}
 
@@ -148,8 +148,8 @@ public class ClientRegister {
 		for (byte b1 : b) {
 			sb.append(Integer.toHexString(b1 & 0xff).toString());
 		}
-			
-	return sb.toString();
+
+		return sb.toString();
 	}
 
 }
