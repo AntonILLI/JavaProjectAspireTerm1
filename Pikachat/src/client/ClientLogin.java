@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import java.awt.GridLayout;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
 
@@ -59,7 +61,7 @@ public class ClientLogin {
 		frmLogin = new JFrame();
 		frmLogin.setTitle("Login");
 		frmLogin.setIconImage(
-				Toolkit.getDefaultToolkit().getImage(ClientWindow.class.getResource("/images/pikachu.png")));
+		Toolkit.getDefaultToolkit().getImage(ClientWindow.class.getResource("/images/pikachu.png")));
 		frmLogin.setAlwaysOnTop(true);
 		frmLogin.setBounds(100, 100, 300, 300);
 		frmLogin.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -114,14 +116,21 @@ public class ClientLogin {
 				} catch (Exception e) {
 					e.printStackTrace();
 				} finally {
-
-					ClientInfo.getConnection(loginNickname.getText(), hash);
+				boolean check = false;
+				while(!check) {
+					
+					if (!ClientInfo.getConnection(loginNickname.getText(), hash)) {
+						JOptionPane.showMessageDialog(null, "Invalid nickname or password");
+						break;
+					} else {				
 					frmLogin.dispose();
 
 					String name = loginNickname.getText();
 					ClientWindow chatWindow = new ClientWindow(name);
 					chatWindow.frmPikachat.setVisible(true);
-
+					check = true;
+						}
+					}
 				}
 
 			}

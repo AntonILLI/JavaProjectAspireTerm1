@@ -92,7 +92,8 @@ public class ClientInfo {
 				System.out.println("Access granted to: " + loginName + " " + loginPassword);
 				userConfirmed = true;
 			} else {
-				JOptionPane.showMessageDialog(null, "Invalid nickname and/or password");
+				userConfirmed = false;
+				//JOptionPane.showMessageDialog(null, "Invalid nickname and/or password");
 			}
 
 		} catch (Exception e) {
