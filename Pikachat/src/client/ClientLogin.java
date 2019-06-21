@@ -101,7 +101,7 @@ public class ClientLogin {
 		JButton btnLogOn = new JButton("Log On");
 		btnLogOn.setBackground(new java.awt.Color(255, 102, 102));
 		btnLogOn.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnLogOn.setForeground(Color.WHITE);
+		btnLogOn.setForeground(Color.BLUE);
 
 		btnLogOn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -151,7 +151,7 @@ public class ClientLogin {
 
 		JButton btnRegister = new JButton("Register ");
 		btnRegister.setFont(new Font("Tahoma", Font.BOLD, 11));
-		btnRegister.setForeground(Color.WHITE);
+		btnRegister.setForeground(Color.BLUE);
 		btnRegister.setBackground(new java.awt.Color(255, 102, 102));
 		btnRegister.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
